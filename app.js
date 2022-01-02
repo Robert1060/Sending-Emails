@@ -1,9 +1,14 @@
 require('dotenv').config();
 require('express-async-errors');
-
+const helmet = require('helmet')
 const express = require('express');
 const app = express();
 const sendEmail = require('./controllers/sendEmail')
+const cors = require('cors')
+// some security 
+app.use(helmet())
+app.use(cors())
+
 // error handler
 const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
